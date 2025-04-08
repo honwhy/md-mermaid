@@ -5,6 +5,7 @@ import toUtf8 from './plugins/vite-plugin-to-utf8'
 export default defineConfig({
   modules: [`@wxt-dev/module-vue`],
   manifest: {
+    permissions: [`tabs`],
     web_accessible_resources: [
       {
         resources: [`*.png`, `*.svg`],
