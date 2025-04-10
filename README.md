@@ -5,12 +5,14 @@ demo project for intergating mermaid into marked
 ## issues
 
 https://github.com/wxt-dev/wxt/issues/353
+https://github.com/wxt-dev/wxt/issues/357
 
 ## ideas
 
 [redirector extension](https://blog.csdn.net/u012223913/article/details/121271957)
 [URL Auto Redirector](https://github.com/URLAutoRedirector/URLAutoRedirector)
 [kkgithub faq](https://help.kkgithub.com/questions/)
+[chrome插件获取window挂载的属性](https://cloud.tencent.com/developer/article/2070877)
 
 ## fix
 

@@ -6,7 +6,7 @@ export default defineContentScript({
   matches: [`https://github.com/*`],
 
   async main(ctx) {
-    await injectScript(`./injected.js`, {
+    await injectScript(`/injected.js`, {
       keepInDom: false
     })
     const ui = createIntegratedUi(ctx, {

@@ -1,19 +1,10 @@
 <script lang="ts" setup>
 import HelloWorld from '@/components/HelloWorld.vue'
-import { marked } from 'marked'
-import mermaid from 'mermaid'
 import { onMounted, ref } from 'vue'
 
-marked.use({
-  renderer: {
-    code: code => code.lang === `mermaid`
-      ? `<pre class="mermaid">${code.text}</pre>`
-      : `<pre><code>${code.text}</code></pre>`,
-  },
-},
-)
-mermaid.initialize({ startOnLoad: true })
+
 const md = `
+## mermaid
 \`\`\`mermaid
 pie title 2022年中国车险市场份额前五品牌（估算）
     "人保财险" : 33
@@ -23,13 +14,30 @@ pie title 2022年中国车险市场份额前五品牌（估算）
     "国寿财险" : 8
     "其他" : 7
 \`\`\`
+## katex
+$$
+c = \\pm\\sqrt{a^2 + b^2}
+$$
 `
 const htmlContent = ref(``)
+function mdToHtml() {
+  setTimeout(() => {
+    window.dispatchEvent(new CustomEvent(`marked-request`, {
+      detail: md
+    }))
+  }, 20)
+
+}
+window.addEventListener(`marked-response`, (s) => {
+  const cs = s as CustomEvent
+  htmlContent.value = cs.detail as string
+  nextTick(() => {
+    window.dispatchEvent(new CustomEvent(`mermaid-run`))
+  })
+})
 onMounted(() => {
   console.log(`onMounted`, md)
-  const parsed = marked.parse(md)
-  console.log(`parsed=>`, parsed)
-  htmlContent.value = parsed
+  mdToHtml()
 })
 </script>
 
