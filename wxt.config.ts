@@ -8,7 +8,7 @@ export default defineConfig({
     permissions: [`tabs`],
     web_accessible_resources: [
       {
-        resources: [`*.png`, `*.svg`],
+        resources: [`*.png`, `*.svg`, `injected.js`],
         matches: [`<all_urls>`],
       },
     ],

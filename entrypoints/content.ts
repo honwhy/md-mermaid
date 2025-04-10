@@ -5,7 +5,10 @@ import App from './popup/App.vue'
 export default defineContentScript({
   matches: [`https://github.com/*`],
 
-  main(ctx) {
+  async main(ctx) {
+    await injectScript(`./injected.js`, {
+      keepInDom: false
+    })
     const ui = createIntegratedUi(ctx, {
       position: `inline`,
       anchor: `body`,
